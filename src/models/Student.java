@@ -76,13 +76,4 @@ public class Student {
         // Implement download notes functionality
     }
 
-    // Method to enroll in a course
-    public void enrollCourse(String courseName) {
-        enrolledCourses.add(courseName);
-    }
-
-    // Method to drop a course
-    public void dropCourse(String courseName) {
-        enrolledCourses.remove(courseName);
-    }
 }

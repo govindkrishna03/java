@@ -77,9 +77,7 @@ public class Faculty {
     }
 
     // Method to view timetable of each class taught
-    public void viewTimetable() {
-        // Implement view timetable functionality
-    }
+
 
     // Method to view events
     public void viewEvents() {

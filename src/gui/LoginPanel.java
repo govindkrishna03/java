@@ -1,4 +1,5 @@
 package gui;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,21 +10,44 @@ public class LoginPanel extends JPanel {
     private JPasswordField passwordField;
 
     public LoginPanel() {
-        setLayout(new GridLayout(3, 2));
+        setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(10, 10, 10, 10);
 
+        JLabel logoLabel = new JLabel(new ImageIcon("path_to_logo.png"));
+        add(logoLabel, gbc);
+
+        gbc.gridy++;
+        JLabel titleLabel = new JLabel("CampusConnect");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
+        add(titleLabel, gbc);
+
+        gbc.gridy++;
+        gbc.fill = GridBagConstraints.HORIZONTAL;
         JLabel usernameLabel = new JLabel("Username:");
-        add(usernameLabel);
+        add(usernameLabel, gbc);
 
-        usernameField = new JTextField();
-        add(usernameField);
+        gbc.gridy++;
+        usernameField = new JTextField(15);
+        add(usernameField, gbc);
 
+        gbc.gridy++;
         JLabel passwordLabel = new JLabel("Password:");
-        add(passwordLabel);
+        add(passwordLabel, gbc);
 
-        passwordField = new JPasswordField();
-        add(passwordField);
+        gbc.gridy++;
+        passwordField = new JPasswordField(15);
+        add(passwordField, gbc);
 
+        gbc.gridy++;
+        gbc.fill = GridBagConstraints.NONE;
         JButton loginButton = new JButton("Login");
+        loginButton.setPreferredSize(new Dimension(100, 40)); // Customize button size
+        loginButton.setBackground(new Color(0, 102, 102)); // Customize button background color
+        loginButton.setForeground(Color.WHITE); // Set text color
+        loginButton.setFont(new Font("Arial", Font.BOLD, 14)); // Set font
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -44,9 +68,14 @@ public class LoginPanel extends JPanel {
                 passwordField.setText("");
             }
         });
-        add(loginButton);
+        add(loginButton, gbc);
 
+        gbc.gridx++;
         JButton clearButton = new JButton("Clear");
+        clearButton.setPreferredSize(new Dimension(100, 40)); // Customize button size
+        clearButton.setBackground(new Color(255, 51, 51)); // Customize button background color
+        clearButton.setForeground(Color.WHITE); // Set text color
+        clearButton.setFont(new Font("Arial", Font.BOLD, 14)); // Set font
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -54,7 +83,14 @@ public class LoginPanel extends JPanel {
                 passwordField.setText("");
             }
         });
-        add(clearButton);
+        add(clearButton, gbc);
+
+        gbc.gridy++;
+        gbc.gridx = 0;
+        gbc.gridwidth = 2;
+        JLabel footerLabel = new JLabel("Copyright ©  CampusConnect. All rights reserved.");
+        footerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        add(footerLabel, gbc);
     }
 
     public static void main(String[] args) {
