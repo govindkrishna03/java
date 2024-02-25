@@ -16,7 +16,7 @@ public class LoginPanel extends JPanel {
         gbc.gridy = 0;
         gbc.insets = new Insets(10, 10, 10, 10);
 
-        JLabel logoLabel = new JLabel(new ImageIcon("path_to_logo.png"));
+        JLabel logoLabel = new JLabel(new ImageIcon("~/Downloads/Logo.png"));
         add(logoLabel, gbc);
 
         gbc.gridy++;
@@ -44,10 +44,10 @@ public class LoginPanel extends JPanel {
         gbc.gridy++;
         gbc.fill = GridBagConstraints.NONE;
         JButton loginButton = new JButton("Login");
-        loginButton.setPreferredSize(new Dimension(100, 40)); // Customize button size
-        loginButton.setBackground(new Color(0, 102, 102)); // Customize button background color
-        loginButton.setForeground(Color.WHITE); // Set text color
-        loginButton.setFont(new Font("Arial", Font.BOLD, 14)); // Set font
+        loginButton.setPreferredSize(new Dimension(100, 40)); 
+        loginButton.setBackground(new Color(0, 102, 102)); 
+        loginButton.setForeground(Color.WHITE);
+        loginButton.setFont(new Font("Arial", Font.BOLD, 14)); 
         loginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

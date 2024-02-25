@@ -76,7 +76,7 @@ public class Faculty {
         // Implement upload notes functionality
     }
 
-    // Method to view timetable of each class taught
+
 
 
     // Method to view events

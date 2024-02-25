@@ -1,4 +1,6 @@
+
 package gui;
+import gui.MaintenancePanel;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -38,34 +40,33 @@ public class FacAccess extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Handle button click action
                 System.out.println("Button clicked: " + text);
-                if (actionCommand.equals("onMaintenanceButtonClick")) {
-                    try {
-                        // Open MaintenancePanel upon clicking the Maintenance button
-                        MaintenancePanel maintenancePanel = new MaintenancePanel();
-                        maintenancePanel.setVisible(true);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                } else if (actionCommand.equals("onUploadFilesButtonClick")) {
-                    try {
-                        // Open NotesUploader upon clicking the Upload Files button
-                        NotesUploader notesUploader = new NotesUploader();
-                        notesUploader.setVisible(true);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
+                // Corrected to match the button's text
+                if ("Maintenance".equalsIgnoreCase(text)) {
+                    SwingUtilities.invokeLater(() -> {
+                        JFrame repairFrame = new JFrame("Repair Panel");
+                       
+                        repairFrame.getContentPane().add(new MaintenancePanel());
+                        repairFrame.pack();
+                        repairFrame.setLocationRelativeTo(null);
+                        repairFrame.setVisible(true);
+                    });
                 }
+                
+
+                // Add other conditions for additional buttons here
             }
         });
         return button;
     }
-
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 new FacAccess().setVisible(true);
+                
             }
         });
+        
     }
 }

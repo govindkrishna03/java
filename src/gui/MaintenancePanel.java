@@ -1,7 +1,7 @@
 package gui;
+
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
-
 import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -9,45 +9,45 @@ import java.awt.event.FocusListener;
 public class MaintenancePanel extends JPanel {
 
     public MaintenancePanel() {
-        setLayout(new BorderLayout(0, 5));
-        setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        setLayout(new BorderLayout(0, 10));
+        setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
-        JLabel titleLabel = new JLabel("Request Maintenance");
+        JLabel titleLabel = new JLabel("Report Repair");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 18));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         add(titleLabel, BorderLayout.NORTH);
 
-        JPanel inputPanel = new JPanel(new GridLayout(3, 1, 0, 5));
+        JPanel inputPanel = new JPanel(new GridLayout(5, 10, 5, 15));
         add(inputPanel, BorderLayout.CENTER);
 
-        JTextField buildingField = new JTextField();
-        addPlaceholder(buildingField, "Select Building");
-        inputPanel.add(buildingField);
+        JTextField equipmentField = new JTextField();
+        addPlaceholder(equipmentField, "Select Equipment");
+        inputPanel.add(equipmentField);
 
-        JTextField classField = new JTextField();
-        addPlaceholder(classField, "Select Class");
-        inputPanel.add(classField);
+        JTextField issueField = new JTextField();
+        addPlaceholder(issueField, "Describe the Issue");
+        inputPanel.add(issueField);
 
-        JTextArea problemArea = new JTextArea();
-        problemArea.setLineWrap(true);
-        problemArea.setWrapStyleWord(true);
-        addPlaceholder(problemArea, "Describe the problem");
-        JScrollPane scrollPane = new JScrollPane(problemArea);
+        JTextArea solutionArea = new JTextArea();
+        solutionArea.setLineWrap(true);
+        solutionArea.setWrapStyleWord(true);
+        addPlaceholder(solutionArea, "Provide a Solution");
+        JScrollPane scrollPane = new JScrollPane(solutionArea);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         inputPanel.add(scrollPane);
 
-        JButton requestButton = new JButton("Request");
-        requestButton.setFont(new Font("Arial", Font.PLAIN, 16));
-        requestButton.addActionListener(e -> {
-            // Handle request button click
-            String building = buildingField.getText();
-            String classroom = classField.getText();
-            String problem = problemArea.getText();
-            System.out.println("Building: " + building);
-            System.out.println("Classroom: " + classroom);
-            System.out.println("Problem: " + problem);
+        JButton reportButton = new JButton("Report");
+        reportButton.setFont(new Font("Arial", Font.PLAIN, 16));
+        reportButton.addActionListener(e -> {
+            // Handle report button click
+            String equipment = equipmentField.getText();
+            String issue = issueField.getText();
+            String solution = solutionArea.getText();
+            System.out.println("Equipment: " + equipment);
+            System.out.println("Issue: " + issue);
+            System.out.println("Solution: " + solution);
         });
-        add(requestButton, BorderLayout.SOUTH);
+        add(reportButton, BorderLayout.SOUTH);
     }
 
     private void addPlaceholder(JTextComponent textComponent, String placeholder) {
@@ -74,7 +74,7 @@ public class MaintenancePanel extends JPanel {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Maintenance Panel");
+            JFrame frame = new JFrame("Repair Panel");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.getContentPane().add(new MaintenancePanel());
             frame.pack();

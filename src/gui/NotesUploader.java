@@ -1,5 +1,4 @@
 package gui;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -75,6 +74,14 @@ public class NotesUploader extends JFrame {
         try {
             Thread.sleep(2000); // Simulating upload process
             setStatus("Notes uploaded successfully.");
+
+            // After successful upload, display the file on another JFrame
+            SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    displayUploadedFile(filePath);
+                }
+            });
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
@@ -82,6 +89,19 @@ public class NotesUploader extends JFrame {
 
     private void setStatus(String message) {
         statusLabel.setText(message);
+    }
+
+    private void displayUploadedFile(String filePath) {
+        JFrame frame = new JFrame("Uploaded File");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Close only this frame
+        frame.setSize(400, 300);
+        frame.setLocationRelativeTo(null);
+
+        JLabel label = new JLabel("Uploaded File: " + filePath);
+        label.setHorizontalAlignment(SwingConstants.CENTER);
+        frame.add(label, BorderLayout.CENTER);
+
+        frame.setVisible(true);
     }
 
     public static void main(String[] args) {
